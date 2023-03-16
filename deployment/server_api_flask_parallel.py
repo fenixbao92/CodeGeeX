@@ -218,7 +218,10 @@ def main():
         print("Total generation time:", t1 - t0)
         return {"result":generated_code,"time":t1 - t0,"len":length}
     print("Server to Deployed")
-    app.run(debug=False)
+    try:
+        app.run(debug=False)
+    except e:
+        pass 
     print("Server Deployed ...")
 
 if __name__ == "__main__":
