@@ -1,15 +1,4 @@
-code translation
-Java:
-public class Solution {
-    public static boolean hasCloseElements(int[] nums, int threshold) {
-        for (int i = 0; i < nums.length - 1; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (Math.abs(nums[i] - nums[j]) < threshold) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-}
-Python:
+// Write a function that returns the sum of the numbers from 1 to n.
+// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
+
+public class SumOfNumbers {
