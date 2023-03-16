@@ -183,6 +183,7 @@ def main():
     print_rank_0(prompt)
     n_token_prompt = len(tokens)
     print_rank_0(f"N_token_prompt:{n_token_prompt}")
+    print("**************micro_batch_size************:",micro_batch_size);
     token_stream = get_token_stream(
         model,
         [copy.deepcopy(tokens) for _ in range(micro_batch_size)],
