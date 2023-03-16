@@ -139,6 +139,7 @@ def add_code_generation_args(parser):
 
     return parser
 
+app = Flask(__name__)
 
 def main():
     initialize_megatron(
@@ -174,7 +175,6 @@ def main():
     #     prompt = f.readlines()
     #     prompt = "".join(prompt)
     
-    app = Flask(__name__)
     print("=============app===============")
     @app.route('/predict', methods=['POST'])
     def predict():
@@ -221,7 +221,6 @@ def main():
     app.run(debug=False)
     print("Server Deployed ...")
 
-
 if __name__ == "__main__":
     with torch.no_grad():
-        main()
+        main()·
