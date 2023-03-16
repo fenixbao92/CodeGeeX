@@ -175,43 +175,43 @@ def main():
     print_rank_0(f"Generating with out_seq_len {out_seq_length}...")
     
     times[out_seq_length] = []
-    for prompt in [prompt] * args.n_generation:
-        t0 = time.perf_counter()
-        tokens = tokenizer.tokenize(prompt)
-        print_rank_0(tokens)
-        print_rank_0("Current prompt:")
-        print_rank_0(prompt)
-        n_token_prompt = len(tokens)
-        print_rank_0(f"N_token_prompt:{n_token_prompt}")
-        token_stream = get_token_stream(
-            model,
-            [copy.deepcopy(tokens) for _ in range(micro_batch_size)],
-            micro_batch_size=micro_batch_size,
-            topk=args.top_k,
-            topp=args.top_p,
-            temperature=args.temperature,
-        )
-        is_finished = [False for _ in range(micro_batch_size)]
-        for i, generated in enumerate(token_stream):
-            generated_tokens = generated[0]
-            for j in range(micro_batch_size):
-                if is_finished[j]:
-                    continue
-                if generated_tokens[j].cpu().numpy()[-1] == tokenizer.eod or len(
-                        generated_tokens[j]) >= out_seq_length:
-                    is_finished[j] = True
-                    generated_tokens_ = generated_tokens[j].cpu().numpy().tolist()
-                    generated_code = tokenizer.detokenize(generated_tokens_[n_token_prompt:])
-                    t1 = time.perf_counter()
-                    print_rank_0(f"Total generation time: {t1 - t0}, # Tokens: {len(generated_tokens_) - n_token_prompt}")
-                    print_rank_0(f"{(t1 - t0) / (len(generated_tokens_) - n_token_prompt)}s/token")
-                    times[out_seq_length].append(t1 - t0)
-                    print_rank_0("================================= Generated code:")
-                    print_rank_0(generated_code)
-                    t0 = time.perf_counter()
-                
-                if all(is_finished):
-                    break
+    # for prompt in [prompt] * args.n_generation:
+    t0 = time.perf_counter()
+    tokens = tokenizer.tokenize(prompt)
+    print_rank_0(tokens)
+    print_rank_0("Current prompt:")
+    print_rank_0(prompt)
+    n_token_prompt = len(tokens)
+    print_rank_0(f"N_token_prompt:{n_token_prompt}")
+    token_stream = get_token_stream(
+        model,
+        [copy.deepcopy(tokens) for _ in range(micro_batch_size)],
+        micro_batch_size=micro_batch_size,
+        topk=args.top_k,
+        topp=args.top_p,
+        temperature=args.temperature,
+    )
+    is_finished = [False for _ in range(micro_batch_size)]
+    for i, generated in enumerate(token_stream):
+        generated_tokens = generated[0]
+        for j in range(micro_batch_size):
+            if is_finished[j]:
+                continue
+            if generated_tokens[j].cpu().numpy()[-1] == tokenizer.eod or len(
+                    generated_tokens[j]) >= out_seq_length:
+                is_finished[j] = True
+                generated_tokens_ = generated_tokens[j].cpu().numpy().tolist()
+                generated_code = tokenizer.detokenize(generated_tokens_[n_token_prompt:])
+                t1 = time.perf_counter()
+                print_rank_0(f"Total generation time: {t1 - t0}, # Tokens: {len(generated_tokens_) - n_token_prompt}")
+                print_rank_0(f"{(t1 - t0) / (len(generated_tokens_) - n_token_prompt)}s/token")
+                times[out_seq_length].append(t1 - t0)
+                print_rank_0("================================= Generated code:")
+                print_rank_0(generated_code)
+                t0 = time.perf_counter()
+            
+            if all(is_finished):
+                break
 
     print_rank_0(times)
     for out_seq_length in times.keys():
