@@ -175,7 +175,7 @@ def main():
     #     prompt = "".join(prompt)
     
     app = Flask(__name__)
-
+    print("=============app===============")
     @app.route('/predict', methods=['POST'])
     def predict():
         json_ = request.json
