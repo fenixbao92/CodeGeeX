@@ -41,7 +41,6 @@ CMD="torchrun --nproc_per_node $MP_SIZE $MAIN_DIR/deployment/server_api_flask_pa
         --greedy \
         --use-cpu-initialization \
         --ln-fp16 \
-         --master_port 6000 \
         $MODEL_ARGS"
 
 echo "$CMD"
