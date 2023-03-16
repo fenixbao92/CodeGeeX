@@ -220,7 +220,7 @@ def main():
     print("Server to Deployed")
     try:
         app.run(debug=False)
-    except e:
+    except Exception as e:
         pass 
     print("Server Deployed ...")
 
