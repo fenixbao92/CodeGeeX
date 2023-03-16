@@ -193,7 +193,7 @@ def main():
         temperature=args.temperature,
     )
     is_finished = [False for _ in range(micro_batch_size)]
-    print("**************token_stream length ************:",len(token_stream));
+    # print("**************token_stream length ************:",len(token_stream));
     for i, generated in enumerate(token_stream):
         generated_tokens = generated[0]
         # for j in range(micro_batch_size):
