@@ -209,7 +209,7 @@ def main():
             generated_tokens_ = generated_tokens[j].cpu().numpy().tolist()
             generated_code = tokenizer.detokenize(generated_tokens_[n_token_prompt:])
             t1 = time.perf_counter()
-            print_rank_0(f"Total generation time: {t1 - t0}, # Tokens: {len(generated_tokens_) - n_token_prompt}")
+            print_rank_0(f"Total generation time: {t1 - t0}, # generated_tokens_: {len(generated_tokens_)} ,#prompt: {n_token_prompt}")
             # print_rank_0(f"{(t1 - t0) / (len(generated_tokens_) - n_token_prompt)}s/token")
             times[out_seq_length].append(t1 - t0)
             print_rank_0("================================= Generated code:")
