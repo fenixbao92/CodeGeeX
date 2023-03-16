@@ -29,7 +29,7 @@ if [ -z "$PROMPT_FILE" ]; then
 fi
 
 # remove --greedy if using sampling
-CMD="torchrun --nproc_per_node $MP_SIZE $MAIN_DIR/deployment/server_api_flask_parallel.py \
+CMD="torchrun --nproc_per_node --master_port 6000 $MP_SIZE $MAIN_DIR/deployment/server_api_flask_parallel.py \
         --tensor-model-parallel-size $MP_SIZE \
         --prompt-file $PROMPT_FILE \
         --tokenizer-path $TOKENIZER_PATH \
