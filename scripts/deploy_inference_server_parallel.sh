@@ -9,8 +9,10 @@ MAIN_DIR=$(dirname "$SCRIPT_DIR")
 TOKENIZER_PATH="$MAIN_DIR/codegeex/tokenizer/"
 
 if [ -z "$MP_SIZE" ]; then
-  MP_SIZE=2
+  MP_SIZE=1
 fi
+
+MP_SIZE=1
 
 if [ "$MP_SIZE" -eq 1 ]; then
   source "$MAIN_DIR/configs/codegeex_13b.sh"

@@ -174,7 +174,6 @@ def main():
     # with open(args.prompt_file, "r") as f:
     #     prompt = f.readlines()
     #     prompt = "".join(prompt)
-    
     print("=============app===============")
     @app.route('/predict', methods=['POST'])
     def predict():
