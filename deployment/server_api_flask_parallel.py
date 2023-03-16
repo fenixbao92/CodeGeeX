@@ -217,6 +217,7 @@ def main():
         t1 = time.perf_counter()
         print("Total generation time:", t1 - t0)
         return {"result":generated_code,"time":t1 - t0,"len":length}
+    print("Server to Deployed")
     app.run(debug=False)
     print("Server Deployed ...")
 
