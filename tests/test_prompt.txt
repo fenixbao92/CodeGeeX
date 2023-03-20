@@ -1,4 +1,1 @@
-// Write a function that returns the sum of the numbers from 1 to n.
-// For example, if n is 5, then the function should return 1 + 2 + 3 + 4 + 5.
-
-public class SumOfNumbers {
+// language: Java" + "\n" + quick sort
