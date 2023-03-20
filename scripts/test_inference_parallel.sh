@@ -29,7 +29,7 @@ if [ -z "$PROMPT_FILE" ]; then
 fi
 
 # remove --greedy if using sampling
-CMD="torchrun --nproc_per_node $MP_SIZE $MAIN_DIR/tests/test_inference_megatron1.py \
+CMD="torchrun --nproc_per_node $MP_SIZE $MAIN_DIR/tests/test_inference_megatron.py \
         --tensor-model-parallel-size $MP_SIZE \
         --prompt-file $PROMPT_FILE \
         --tokenizer-path $TOKENIZER_PATH \
