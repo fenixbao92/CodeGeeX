@@ -219,7 +219,7 @@ def main():
     print("Server to Deployed")
     try:
         app.run(debug=False)
-    except Exception as e:
+    except BaseException as e:
         print("===========================exception===========================")
         print(e)
     print("Server Deployed ...")
