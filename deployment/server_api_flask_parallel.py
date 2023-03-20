@@ -220,7 +220,8 @@ def main():
     try:
         app.run(debug=False)
     except Exception as e:
-        pass 
+        print("===========================exception===========================")
+        print(e)
     print("Server Deployed ...")
 
 if __name__ == "__main__":
