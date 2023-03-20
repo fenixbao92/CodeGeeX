@@ -192,7 +192,7 @@ def main():
         topp=args.top_p,
         temperature=args.temperature,
     )
-    out_seq_length = 32 + n_token_prompt
+    out_seq_length = 64 + n_token_prompt
     is_finished = [False for _ in range(micro_batch_size)]
     # print("**************token_stream length ************:",len(token_stream));
     for i, generated in enumerate(token_stream):
