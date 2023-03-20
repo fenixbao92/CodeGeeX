@@ -9,5 +9,5 @@ app = Flask(__name__)
 def predict():
     return {"msg":request.args.get("q")+"has received"}
     
-app.run(debug=False,port=8080)
+app.run(debug=False,port=8081)
    
