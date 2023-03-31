@@ -1,6 +1,6 @@
 # CodeGeeX-13B configuration
 
-CHECKPOINT_PATH="/dev/codegeex/codegeex_13b.pt)>"
+CHECKPOINT_PATH="/home/admin/cnarch-lowcode-inference/CodeGeeX/codegeex_13b.pt"
 
 MODEL_ARGS="--num-layers 39 \
             --hidden-size 5120 \
