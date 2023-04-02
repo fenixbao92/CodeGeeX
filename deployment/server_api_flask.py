@@ -142,7 +142,20 @@ def main():
     torch.cuda.synchronize()
 
     app = Flask(__name__)
-    
+
+    @app.route('/checkpreload.htm')
+    def checkpreload():
+        return 'success'
+
+    @app.route('/status.taobao')
+    def taobaostatus():
+        return 'success'
+
+    @app.route('/')
+    def home():
+        return 'home page'
+
+
     @app.route('/predict', methods=['POST'])
     def predict():
         json_ = request.json
