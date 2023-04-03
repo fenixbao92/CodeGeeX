@@ -1,7 +1,7 @@
 # CodeGeeX-13B parallel configuration
 # Parallel checkpoints are named under the format "mp_rank_0{i}_model_states.pt", where i is the rank, start from 0.
 
-CHECKPOINT_PATH="/dev/codegeex1"
+CHECKPOINT_PATH=CHECKPOINT_PATH="/home/admin/cnarch-lowcode-inference/CodeGeeX/model-parallel"
 
 MODEL_ARGS="--num-layers 39 \
             --hidden-size 5120 \
